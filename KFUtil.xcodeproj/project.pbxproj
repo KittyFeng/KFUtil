@@ -1,0 +1,529 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C622FC651C92AD3900C64A88 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = C622FC641C92AD3900C64A88 /* UIView+Frame.m */; };
+		C6464FC81C8533B300F30CD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C6464FC71C8533B300F30CD3 /* main.m */; };
+		C6464FCB1C8533B300F30CD3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C6464FCA1C8533B300F30CD3 /* AppDelegate.m */; };
+		C6464FCE1C8533B300F30CD3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6464FCD1C8533B300F30CD3 /* ViewController.m */; };
+		C6464FD11C8533B300F30CD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6464FCF1C8533B300F30CD3 /* Main.storyboard */; };
+		C6464FD31C8533B300F30CD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6464FD21C8533B300F30CD3 /* Assets.xcassets */; };
+		C6464FD61C8533B300F30CD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6464FD41C8533B300F30CD3 /* LaunchScreen.storyboard */; };
+		C6464FE11C8533B300F30CD3 /* KYUtilUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C6464FE01C8533B300F30CD3 /* KYUtilUITests.m */; };
+		C68976431C9B9918002A313D /* NSDictionary+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = C68976421C9B9918002A313D /* NSDictionary+Additions.m */; };
+		C68976531C9B9D6F002A313D /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C68976471C9B9D6F002A313D /* AFHTTPSessionManager.m */; };
+		C68976541C9B9D6F002A313D /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C689764A1C9B9D6F002A313D /* AFNetworkReachabilityManager.m */; };
+		C68976551C9B9D6F002A313D /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = C689764C1C9B9D6F002A313D /* AFSecurityPolicy.m */; };
+		C68976561C9B9D6F002A313D /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = C689764E1C9B9D6F002A313D /* AFURLRequestSerialization.m */; };
+		C68976571C9B9D6F002A313D /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = C68976501C9B9D6F002A313D /* AFURLResponseSerialization.m */; };
+		C68976581C9B9D6F002A313D /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C68976521C9B9D6F002A313D /* AFURLSessionManager.m */; };
+		C689765B1C9B9DDD002A313D /* KFRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C689765A1C9B9DDD002A313D /* KFRequestManager.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C6464FDD1C8533B300F30CD3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C6464FBB1C8533B300F30CD3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C6464FC21C8533B300F30CD3;
+			remoteInfo = FYUtil;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C622FC631C92AD3900C64A88 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Frame.h"; path = "../UIViewUtil/UIView+Frame.h"; sourceTree = "<group>"; };
+		C622FC641C92AD3900C64A88 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Frame.m"; path = "../UIViewUtil/UIView+Frame.m"; sourceTree = "<group>"; };
+		C622FC691C92BB7F00C64A88 /* KFLogMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFLogMacro.h; sourceTree = "<group>"; };
+		C622FC6A1C92C57500C64A88 /* KFUtil-PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KFUtil-PrefixHeader.pch"; sourceTree = "<group>"; };
+		C6464FC31C8533B300F30CD3 /* KFUtil.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KFUtil.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6464FC71C8533B300F30CD3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C6464FC91C8533B300F30CD3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C6464FCA1C8533B300F30CD3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C6464FCC1C8533B300F30CD3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C6464FCD1C8533B300F30CD3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C6464FD01C8533B300F30CD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C6464FD21C8533B300F30CD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C6464FD51C8533B300F30CD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C6464FD71C8533B300F30CD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6464FDC1C8533B300F30CD3 /* KFUtil.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KFUtil.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6464FE01C8533B300F30CD3 /* KYUtilUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KYUtilUITests.m; sourceTree = "<group>"; };
+		C6464FE21C8533B300F30CD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C68976411C9B9918002A313D /* NSDictionary+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Additions.h"; sourceTree = "<group>"; };
+		C68976421C9B9918002A313D /* NSDictionary+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Additions.m"; sourceTree = "<group>"; };
+		C68976461C9B9D6F002A313D /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		C68976471C9B9D6F002A313D /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		C68976481C9B9D6F002A313D /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		C68976491C9B9D6F002A313D /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		C689764A1C9B9D6F002A313D /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		C689764B1C9B9D6F002A313D /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		C689764C1C9B9D6F002A313D /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		C689764D1C9B9D6F002A313D /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		C689764E1C9B9D6F002A313D /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		C689764F1C9B9D6F002A313D /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		C68976501C9B9D6F002A313D /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		C68976511C9B9D6F002A313D /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		C68976521C9B9D6F002A313D /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		C68976591C9B9DDD002A313D /* KFRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFRequestManager.h; sourceTree = "<group>"; };
+		C689765A1C9B9DDD002A313D /* KFRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFRequestManager.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C6464FC01C8533B300F30CD3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6464FD91C8533B300F30CD3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C622FC621C92AC2100C64A88 /* UIViewUtil */ = {
+			isa = PBXGroup;
+			children = (
+				C622FC631C92AD3900C64A88 /* UIView+Frame.h */,
+				C622FC641C92AD3900C64A88 /* UIView+Frame.m */,
+			);
+			path = UIViewUtil;
+			sourceTree = "<group>";
+		};
+		C622FC671C92BAC600C64A88 /* DebugUtil */ = {
+			isa = PBXGroup;
+			children = (
+				C622FC691C92BB7F00C64A88 /* KFLogMacro.h */,
+			);
+			path = DebugUtil;
+			sourceTree = "<group>";
+		};
+		C6464FBA1C8533B300F30CD3 = {
+			isa = PBXGroup;
+			children = (
+				C6464FC51C8533B300F30CD3 /* KFUtil */,
+				C6464FDF1C8533B300F30CD3 /* KFUtilUITests */,
+				C6464FC41C8533B300F30CD3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C6464FC41C8533B300F30CD3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C6464FC31C8533B300F30CD3 /* KFUtil.app */,
+				C6464FDC1C8533B300F30CD3 /* KFUtil.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6464FC51C8533B300F30CD3 /* KFUtil */ = {
+			isa = PBXGroup;
+			children = (
+				C6464FC91C8533B300F30CD3 /* AppDelegate.h */,
+				C6464FCA1C8533B300F30CD3 /* AppDelegate.m */,
+				C6464FCC1C8533B300F30CD3 /* ViewController.h */,
+				C6464FCD1C8533B300F30CD3 /* ViewController.m */,
+				C622FC671C92BAC600C64A88 /* DebugUtil */,
+				C622FC621C92AC2100C64A88 /* UIViewUtil */,
+				C6464FCF1C8533B300F30CD3 /* Main.storyboard */,
+				C68513331CA0DEF800CB4470 /* FYDatabase */,
+				C68976441C9B9D0D002A313D /* KFNetworking */,
+				C68976401C9B9871002A313D /* FoundationUtil */,
+				C6464FD21C8533B300F30CD3 /* Assets.xcassets */,
+				C6464FD41C8533B300F30CD3 /* LaunchScreen.storyboard */,
+				C6464FD71C8533B300F30CD3 /* Info.plist */,
+				C6464FC61C8533B300F30CD3 /* Supporting Files */,
+				C622FC6A1C92C57500C64A88 /* KFUtil-PrefixHeader.pch */,
+			);
+			path = KFUtil;
+			sourceTree = "<group>";
+		};
+		C6464FC61C8533B300F30CD3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C6464FC71C8533B300F30CD3 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C6464FDF1C8533B300F30CD3 /* KFUtilUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C6464FE01C8533B300F30CD3 /* KYUtilUITests.m */,
+				C6464FE21C8533B300F30CD3 /* Info.plist */,
+			);
+			path = KFUtilUITests;
+			sourceTree = "<group>";
+		};
+		C68513331CA0DEF800CB4470 /* FYDatabase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FYDatabase;
+			sourceTree = "<group>";
+		};
+		C68976401C9B9871002A313D /* FoundationUtil */ = {
+			isa = PBXGroup;
+			children = (
+				C68976411C9B9918002A313D /* NSDictionary+Additions.h */,
+				C68976421C9B9918002A313D /* NSDictionary+Additions.m */,
+			);
+			path = FoundationUtil;
+			sourceTree = "<group>";
+		};
+		C68976441C9B9D0D002A313D /* KFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				C68976591C9B9DDD002A313D /* KFRequestManager.h */,
+				C689765A1C9B9DDD002A313D /* KFRequestManager.m */,
+				C68976451C9B9D6F002A313D /* AFNetworking */,
+			);
+			path = KFNetworking;
+			sourceTree = "<group>";
+		};
+		C68976451C9B9D6F002A313D /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				C68976461C9B9D6F002A313D /* AFHTTPSessionManager.h */,
+				C68976471C9B9D6F002A313D /* AFHTTPSessionManager.m */,
+				C68976481C9B9D6F002A313D /* AFNetworking.h */,
+				C68976491C9B9D6F002A313D /* AFNetworkReachabilityManager.h */,
+				C689764A1C9B9D6F002A313D /* AFNetworkReachabilityManager.m */,
+				C689764B1C9B9D6F002A313D /* AFSecurityPolicy.h */,
+				C689764C1C9B9D6F002A313D /* AFSecurityPolicy.m */,
+				C689764D1C9B9D6F002A313D /* AFURLRequestSerialization.h */,
+				C689764E1C9B9D6F002A313D /* AFURLRequestSerialization.m */,
+				C689764F1C9B9D6F002A313D /* AFURLResponseSerialization.h */,
+				C68976501C9B9D6F002A313D /* AFURLResponseSerialization.m */,
+				C68976511C9B9D6F002A313D /* AFURLSessionManager.h */,
+				C68976521C9B9D6F002A313D /* AFURLSessionManager.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C6464FC21C8533B300F30CD3 /* KFUtil */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6464FE51C8533B300F30CD3 /* Build configuration list for PBXNativeTarget "KFUtil" */;
+			buildPhases = (
+				C6464FBF1C8533B300F30CD3 /* Sources */,
+				C6464FC01C8533B300F30CD3 /* Frameworks */,
+				C6464FC11C8533B300F30CD3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KFUtil;
+			productName = FYUtil;
+			productReference = C6464FC31C8533B300F30CD3 /* KFUtil.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C6464FDB1C8533B300F30CD3 /* KFUtilUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6464FE81C8533B300F30CD3 /* Build configuration list for PBXNativeTarget "KFUtilUITests" */;
+			buildPhases = (
+				C6464FD81C8533B300F30CD3 /* Sources */,
+				C6464FD91C8533B300F30CD3 /* Frameworks */,
+				C6464FDA1C8533B300F30CD3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C6464FDE1C8533B300F30CD3 /* PBXTargetDependency */,
+			);
+			name = KFUtilUITests;
+			productName = FYUtilUITests;
+			productReference = C6464FDC1C8533B300F30CD3 /* KFUtil.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C6464FBB1C8533B300F30CD3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = KittyFeng;
+				TargetAttributes = {
+					C6464FC21C8533B300F30CD3 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					C6464FDB1C8533B300F30CD3 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = C6464FC21C8533B300F30CD3;
+					};
+				};
+			};
+			buildConfigurationList = C6464FBE1C8533B300F30CD3 /* Build configuration list for PBXProject "KFUtil" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C6464FBA1C8533B300F30CD3;
+			productRefGroup = C6464FC41C8533B300F30CD3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C6464FC21C8533B300F30CD3 /* KFUtil */,
+				C6464FDB1C8533B300F30CD3 /* KFUtilUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C6464FC11C8533B300F30CD3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6464FD61C8533B300F30CD3 /* LaunchScreen.storyboard in Resources */,
+				C6464FD31C8533B300F30CD3 /* Assets.xcassets in Resources */,
+				C6464FD11C8533B300F30CD3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6464FDA1C8533B300F30CD3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C6464FBF1C8533B300F30CD3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C68976561C9B9D6F002A313D /* AFURLRequestSerialization.m in Sources */,
+				C6464FCE1C8533B300F30CD3 /* ViewController.m in Sources */,
+				C6464FCB1C8533B300F30CD3 /* AppDelegate.m in Sources */,
+				C622FC651C92AD3900C64A88 /* UIView+Frame.m in Sources */,
+				C689765B1C9B9DDD002A313D /* KFRequestManager.m in Sources */,
+				C68976581C9B9D6F002A313D /* AFURLSessionManager.m in Sources */,
+				C68976571C9B9D6F002A313D /* AFURLResponseSerialization.m in Sources */,
+				C68976541C9B9D6F002A313D /* AFNetworkReachabilityManager.m in Sources */,
+				C68976551C9B9D6F002A313D /* AFSecurityPolicy.m in Sources */,
+				C68976531C9B9D6F002A313D /* AFHTTPSessionManager.m in Sources */,
+				C68976431C9B9918002A313D /* NSDictionary+Additions.m in Sources */,
+				C6464FC81C8533B300F30CD3 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6464FD81C8533B300F30CD3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6464FE11C8533B300F30CD3 /* KYUtilUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C6464FDE1C8533B300F30CD3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C6464FC21C8533B300F30CD3 /* KFUtil */;
+			targetProxy = C6464FDD1C8533B300F30CD3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C6464FCF1C8533B300F30CD3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C6464FD01C8533B300F30CD3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C6464FD41C8533B300F30CD3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C6464FD51C8533B300F30CD3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C6464FE31C8533B300F30CD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C6464FE41C8533B300F30CD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C6464FE61C8533B300F30CD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/KFUtil/KFUtil-PrefixHeader.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/KFUtil/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.KittyFeng.FYUtil;
+				PRODUCT_NAME = KFUtil;
+			};
+			name = Debug;
+		};
+		C6464FE71C8533B300F30CD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/KFUtil/KFUtil-PrefixHeader.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/KFUtil/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.KittyFeng.FYUtil;
+				PRODUCT_NAME = KFUtil;
+			};
+			name = Release;
+		};
+		C6464FE91C8533B300F30CD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FYUtilUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Sunny.FYUtilUITests;
+				PRODUCT_NAME = KFUtil;
+				TEST_TARGET_NAME = FYUtil;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		C6464FEA1C8533B300F30CD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FYUtilUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Sunny.FYUtilUITests;
+				PRODUCT_NAME = KFUtil;
+				TEST_TARGET_NAME = FYUtil;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C6464FBE1C8533B300F30CD3 /* Build configuration list for PBXProject "KFUtil" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6464FE31C8533B300F30CD3 /* Debug */,
+				C6464FE41C8533B300F30CD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6464FE51C8533B300F30CD3 /* Build configuration list for PBXNativeTarget "KFUtil" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6464FE61C8533B300F30CD3 /* Debug */,
+				C6464FE71C8533B300F30CD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C6464FE81C8533B300F30CD3 /* Build configuration list for PBXNativeTarget "KFUtilUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6464FE91C8533B300F30CD3 /* Debug */,
+				C6464FEA1C8533B300F30CD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C6464FBB1C8533B300F30CD3 /* Project object */;
+}
