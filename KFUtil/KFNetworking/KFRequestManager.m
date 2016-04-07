@@ -7,7 +7,7 @@
 //
 
 #import "KFRequestManager.h"
-//#import "NSDictionary+Additions.h"
+#import "NSDictionary+Additions.h"
 
 #define kBaseURLString @""
 

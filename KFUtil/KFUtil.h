@@ -11,5 +11,7 @@
 
 #import "KFLogMacro.h"
 #import "NSDictionary+Additions.h"
+#import "UIView+Frame.h"
+#import "KFRequestManager.h"
 
 #endif /* KFUtil_h */

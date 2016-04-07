@@ -5,6 +5,7 @@ Pod::Spec.new do |s|
   s.summary      = "KFUtil is a useful tool for you to create an application efficiently."
 
   s.description  = <<-DESC
+KFUtil is a useful tool for you to create an application efficiently.
                    DESC
 
   s.homepage     = "https://github.com/KittyFeng/KFUtil"
@@ -20,6 +21,8 @@ Pod::Spec.new do |s|
 
   s.source_files  = "KFUtil/KFUtil.h"
   s.public_header_files = "KFUtil/KFUtil.h"
+  s.platform      = :ios, '7.0'
+  s.requires_arc  = true
 #  s.dependency "AFNetworking", "~> 2.0"
 
     s.subspec 'DebugUtil' do |ss|
@@ -32,21 +35,19 @@ Pod::Spec.new do |s|
     ss.source_files = 'KFUtil/FoundationUtil/*.{h,m}'
     end
 
-#    s.subspec 'KFNetworking' do |ss|
-#   ss.public_header_files = 'KFUtil/KFNetworking/*.h'
-#    ss.source_files = 'KFUtil/KFNetworking/*.{h,m}'
-#    end
 
-#    s.subspec 'UIViewUtil' do |ss|
-#    ss.public_header_files = 'KFUtil/UIViewUtil/*.h'
-#    ss.source_files = 'KFUtil/UIViewUtil/*.{h,m}'
-#    ss.framework = 'UIKit'
-#    ss.dependency
-#    end
 
-#    s.subspec 'KFNetworking' do |ss|
-#    ss.public_header_files = 'KFUtil/KFNetworking/*.h'
-#    ss.source_files = 'KFUtil/KFNetworking/*.{h,m}'
-#    end
+    s.subspec 'UIViewUtil' do |ss|
+    ss.public_header_files = 'KFUtil/UIViewUtil/*.h'
+    ss.source_files = 'KFUtil/UIViewUtil/*.{h,m}'
+
+    s.subspec 'KFNetworking' do |ss|
+    ss.public_header_files = 'KFUtil/KFNetworking/*.h'
+    ss.source_files = 'KFUtil/KFNetworking/*.{h,m}'
+    ss.dependency "AFNetworking", "~> 3.0"
+    end
+end
+
+
 
 end
