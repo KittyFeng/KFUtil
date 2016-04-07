@@ -37,12 +37,12 @@ Pod::Spec.new do |s|
 #    ss.source_files = 'KFUtil/KFNetworking/*.{h,m}'
 #    end
 
-    s.subspec 'UIViewUtil' do |ss|
-    ss.public_header_files = 'KFUtil/UIViewUtil/*.h'
-    ss.source_files = 'KFUtil/UIViewUtil/*.{h,m}'
-    ss.framework = 'UIKit'
-    ss.dependency
-    end
+#    s.subspec 'UIViewUtil' do |ss|
+#    ss.public_header_files = 'KFUtil/UIViewUtil/*.h'
+#    ss.source_files = 'KFUtil/UIViewUtil/*.{h,m}'
+#    ss.framework = 'UIKit'
+#    ss.dependency
+#    end
 
 #    s.subspec 'KFNetworking' do |ss|
 #    ss.public_header_files = 'KFUtil/KFNetworking/*.h'
