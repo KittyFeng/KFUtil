@@ -9,7 +9,7 @@
 #ifndef KFUtil_h
 #define KFUtil_h
 
-#import "DebugUtil/KFLogMacro.h"
-#import "FoundationUtil/NSDictionary+Additions.h"
+#import "KFLogMacro.h"
+#import "NSDictionary+Additions.h"
 
 #endif /* KFUtil_h */
