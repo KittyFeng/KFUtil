@@ -7,7 +7,7 @@
 //
 
 #import "KFRequestManager.h"
-#import "NSDictionary+Additions.h"
+//#import "NSDictionary+Additions.h"
 
 #define kBaseURLString @""
 
@@ -392,12 +392,12 @@ static NSDictionary * FillParameters(NSDictionary *parameters) {
                 return;
             }
             
-            NSInteger code = [(NSDictionary *)responseObject getIntegerValueForKey:@"status" defaultValue:0];
-            if (code == kKFRequestErrorTokenInvalid) {
-                //do something
-            }else{
-                [self dealFailureWithRequest:requestID errorDesc:[(NSDictionary *)responseObject getStringValueForKey:@"msg" defaultValue:@""] errorCode:0 failure:failure];
-            }
+//            NSInteger code = [(NSDictionary *)responseObject getIntegerValueForKey:@"status" defaultValue:0];
+//            if (code == kKFRequestErrorTokenInvalid) {
+//                //do something
+//            }else{
+//                [self dealFailureWithRequest:requestID errorDesc:[(NSDictionary *)responseObject getStringValueForKey:@"msg" defaultValue:@""] errorCode:0 failure:failure];
+//            }
             return;
         }
 

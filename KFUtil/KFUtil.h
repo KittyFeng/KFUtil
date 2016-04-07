@@ -9,9 +9,9 @@
 #ifndef KFUtil_h
 #define KFUtil_h
 
-#import "KFLogMacro.h"
-#import "NSDictionary+Additions.h"
-#import "KFNetworking.h"
-#import "UIView+Frame.h"
+#import "DebugUtil/KFLogMacro.h"
+#import "FoundationUtil/NSDictionary+Additions.h"
+#import "KFNetworking/KFNetworking.h"
+#import "UIViewUtil/UIView+Frame.h"
 
 #endif /* KFUtil_h */
