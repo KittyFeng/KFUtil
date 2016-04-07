@@ -11,7 +11,5 @@
 
 #import "DebugUtil/KFLogMacro.h"
 #import "FoundationUtil/NSDictionary+Additions.h"
-#import "KFNetworking/KFNetworking.h"
-#import "UIViewUtil/UIView+Frame.h"
 
 #endif /* KFUtil_h */
