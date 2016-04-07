@@ -20,6 +20,7 @@ Pod::Spec.new do |s|
 
   s.source_files  = "KFUtil/KFUtil.h"
   s.public_header_files = "KFUtil/KFUtil.h"
+#  s.dependency "AFNetworking", "~> 2.0"
 
     s.subspec 'DebugUtil' do |ss|
     ss.public_header_files = 'KFUtil/DebugUtil/*.h'
@@ -31,21 +32,21 @@ Pod::Spec.new do |s|
     ss.source_files = 'KFUtil/FoundationUtil/*.{h,m}'
     end
 
-    s.subspec 'KFNetworking' do |ss|
-    ss.public_header_files = 'KFUtil/KFNetworking/*.h'
-    ss.source_files = 'KFUtil/KFNetworking/*.{h,m}'
-    end
+#    s.subspec 'KFNetworking' do |ss|
+#   ss.public_header_files = 'KFUtil/KFNetworking/*.h'
+#    ss.source_files = 'KFUtil/KFNetworking/*.{h,m}'
+#    end
 
     s.subspec 'UIViewUtil' do |ss|
     ss.public_header_files = 'KFUtil/UIViewUtil/*.h'
     ss.source_files = 'KFUtil/UIViewUtil/*.{h,m}'
     ss.framework = 'UIKit'
+    ss.dependency
     end
 
-    s.subspec 'KFNetworking' do |ss|
-    ss.public_header_files = 'KFUtil/KFNetworking/*.h'
-    ss.source_files = 'KFUtil/KFNetworking/*.{h,m}'
-    ss.dependency "AFNetworking", "~> 2.0"
-    end
+#    s.subspec 'KFNetworking' do |ss|
+#    ss.public_header_files = 'KFUtil/KFNetworking/*.h'
+#    ss.source_files = 'KFUtil/KFNetworking/*.{h,m}'
+#    end
 
 end
