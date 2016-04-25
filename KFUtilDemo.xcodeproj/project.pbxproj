@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2AC2B1B51CCDE6B00023751A /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B1B41CCDE6B00023751A /* UIColor+Hex.m */; };
 		2AF8A75A1CB5F93100F82CB3 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF8A74E1CB5F93100F82CB3 /* AFHTTPSessionManager.m */; };
 		2AF8A75B1CB5F93100F82CB3 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF8A7511CB5F93100F82CB3 /* AFNetworkReachabilityManager.m */; };
 		2AF8A75C1CB5F93100F82CB3 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF8A7531CB5F93100F82CB3 /* AFSecurityPolicy.m */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2AC2B1B31CCDE6B00023751A /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		2AC2B1B41CCDE6B00023751A /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		2AF8A74D1CB5F93100F82CB3 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		2AF8A74E1CB5F93100F82CB3 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		2AF8A74F1CB5F93100F82CB3 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
@@ -210,6 +213,8 @@
 			children = (
 				C665C2EF1CB53F46006E9DAE /* UIView+Frame.h */,
 				C665C2F01CB53F46006E9DAE /* UIView+Frame.m */,
+				2AC2B1B31CCDE6B00023751A /* UIColor+Hex.h */,
+				2AC2B1B41CCDE6B00023751A /* UIColor+Hex.m */,
 			);
 			path = UIViewUtil;
 			sourceTree = "<group>";
@@ -326,6 +331,7 @@
 				2AF8A75F1CB5F93100F82CB3 /* AFURLSessionManager.m in Sources */,
 				2AF8A75B1CB5F93100F82CB3 /* AFNetworkReachabilityManager.m in Sources */,
 				C6464FC81C8533B300F30CD3 /* main.m in Sources */,
+				2AC2B1B51CCDE6B00023751A /* UIColor+Hex.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

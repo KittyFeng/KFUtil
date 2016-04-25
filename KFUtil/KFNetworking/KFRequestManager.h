@@ -11,4 +11,8 @@
 
 @interface KFRequestManager : NSObject
 
+
+///返回一个KFRequestManager对象
++ (instancetype )manager;
+
 @end

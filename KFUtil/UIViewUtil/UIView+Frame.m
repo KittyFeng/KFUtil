@@ -12,10 +12,10 @@
 
 ///---getter---
 
-- (CGFloat) height{
+- (CGFloat)height{
     return self.frame.size.height;
 }
-- (CGFloat) width{
+- (CGFloat)width{
     return self.frame.size.width;
 }
 
