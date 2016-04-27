@@ -12,30 +12,17 @@
 
 #ifdef DEBUG
 
+#define KFLogObject(KEY,VALUE)   NSLog(@"[KFLOG::%@]:%@",KEY,VALUE)
+#define KFLogInt(KEY,VALUE)      NSLog(@"[KFLOG::%@]:%d",KEY,VALUE)
+#define KFLogFloat(KEY,VALUE)    NSLog(@"[KFLOG::%@]:%f",KEY,VALUE)
 
-#define NSLog(...) NSLog(__VA_ARGS__)
+#define KFLogError(ErrorDesc)    NSLog(@"[KFLOG::ERROR]:%@",ErrorDesc)
 
-#else
+#define KFLogMarkPosition        NSLog(@"[KFLOG::Position Mark]:%@\n%s(line:%d)",NSStringFromClass([self class]),__func__,__LINE__)
+#define KFLogMethodIn            NSLog(@"[KFLOG::Method In]:%s(line:%d)",__func__,__LINE__)
+#define KFLogMethodOut           NSLog(@"[KFLOG::Method Out]:%s(line:%d)",__func__,__LINE__)
 
-#define NSLog(...)
-
-#endif
-
-
-
-#ifdef KFLogMode
-
-#define KFLogObject(KEY,VALUE)   NSLog(@"[SLOG::%@]:%@",KEY,VALUE)
-#define KFLogInt(KEY,VALUE)      NSLog(@"[SLOG::%@]:%d",KEY,VALUE)
-#define KFLogFloat(KEY,VALUE)    NSLog(@"[SLOG::%@]:%f",KEY,VALUE)
-
-#define KFLogError(ErrorDesc)    NSLog(@"[SLOG::ERROR]:%@",ErrorDesc)
-
-#define KFLogMarkPosition        NSLog(@"[SLOG::Position Mark]:%@\n%s(line:%d)",NSStringFromClass([self class]),__func__,__LINE__)
-#define KFLogMethodIn            NSLog(@"[SLOG::Method In]:%s(line:%d)",__func__,__LINE__)
-#define KFLogMethodOut           NSLog(@"[SLOG::Method Out]:%s(line:%d)",__func__,__LINE__)
-
-#define KFLogSubviews(VIEW)      NSLog(@"[SLOG::Subviews]:VIEW:%@\nSUBVIEWS:%@",VIEW,[VIEW subviews])
+#define KFLogSubviews(VIEW)      NSLog(@"[KFLOG::Subviews]:VIEW:%@\nSUBVIEWS:%@",VIEW,[VIEW subviews])
 
 #else
 
@@ -45,9 +32,9 @@
 
 #define KFLogError(ErrorDesc)
 
-#define SMethodIn
-#define SMethodOut
-#define SMarkPosition
+#define KFMethodIn
+#define KFMethodOut
+#define KFMarkPosition
 #define KFLogSubviews(VIEW)
 
 

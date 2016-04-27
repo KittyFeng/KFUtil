@@ -9,10 +9,14 @@
 #import "KFRequestManager.h"
 #import "NSDictionary+Additions.h"
 
+
 #define kBaseURLString @""
 
 #warning you can change the name here
 #define kBundle @"com.orgnization.name"
+
+#warning you can change the tempatery cache folder here
+#define kDefaultCachePath NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject
 
 static NSUInteger globalRequestId = 0;
 
@@ -28,62 +32,9 @@ typedef NS_ENUM(int, JYRequestErrors) {
     kKFRequestErrorCancelled = -999,
 };
 
-static NSDictionary * FillParameters(NSDictionary *parameters) {
-    NSMutableDictionary *newParameters = [NSMutableDictionary dictionary];
-    
-    NSArray *parametersKeys = [parameters allKeys];
-    for (id key in parametersKeys) {
-        [newParameters setObject:[parameters objectForKey:key] forKey:key];
-    }
-    
-//    newParameters[@"lang"] = [ShareData sharedInstance].deviceInfo.appLang;
-//    newParameters[@"clientid"] = @(kAppClientId);
-//    newParameters[@"channelid"] = @(kAppChannelId);
-//    newParameters[@"channel"] = @(kAppChannelId);
-//    newParameters[@"ver"] = [ShareData sharedInstance].deviceInfo.appVer;
-//    newParameters[@"isJailbreak"] = [JiaYuanEncrypt jbParam];
-    
-    return newParameters;
-}
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-@interface KFHTTPSessionMannager : AFHTTPSessionManager
-
-+ (instancetype )sharedManager;
-
-@end
-
-
-@implementation KFHTTPSessionMannager
-
-+ (instancetype )sharedManager{
-    static KFHTTPSessionMannager *_sharedManager;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _sharedManager = [[KFHTTPSessionMannager alloc]initWithBaseURL:[NSURL URLWithString:kBaseURLString]];
-    });
-    return _sharedManager;
-}
-
-- (instancetype)initWithBaseURL:(NSURL *)url{
-    return [self initWithBaseURL:url sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-}
-
-- (instancetype)initWithBaseURL:(NSURL *)url sessionConfiguration:(NSURLSessionConfiguration *)sessionConfiguration{
-    self = [super initWithBaseURL:url sessionConfiguration:sessionConfiguration];
-    
-    if (self){
-        self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
-    }
-    return self;
-}
-
-@end
-
+#pragma mark -
+#pragma mark -
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -111,6 +62,8 @@ static NSDictionary * FillParameters(NSDictionary *parameters) {
                    downloadMethod:(NSString *)downloadMethod
                  constructingBody:(void (^)(id formData))constructingBody;
 @end
+
+
 
 @implementation KFRequestInfo
 
@@ -144,11 +97,11 @@ static NSDictionary * FillParameters(NSDictionary *parameters) {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-
+#pragma mark -
+#pragma mark -
 
 @interface KFRequestManager()
 
-@property (nonatomic) KFHTTPSessionMannager *httpSessionManager;
 @property (nonatomic) NSMutableDictionary *requestInfoDic;              //requestID - KFRequestInfo pairs
 @property (nonatomic) NSMutableDictionary *sessionTaskDic;              //requestID - session task pairs
 
@@ -156,267 +109,28 @@ static NSDictionary * FillParameters(NSDictionary *parameters) {
 
 @implementation KFRequestManager
 
-+ (instancetype) manager{
-    return [[self alloc]init];
-}
+
+#pragma mark - init
+
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        _httpSessionManager = [KFHTTPSessionMannager sharedManager];
+        _httpSessionManager = [KFHTTPSessionManager sharedManager];
         _requestInfoDic = [NSMutableDictionary dictionary];
         _sessionTaskDic = [NSMutableDictionary dictionary];
     }
     return self;
 }
 
-- (NSString *)autoRequestID{
-    return [NSString stringWithFormat:@"%@.requestId.%@",kBundle,@(globalRequestId)];
+
+#pragma mark - public methods
+
+
++ (instancetype) manager{
+    return [[self alloc]init];
 }
-
-- (BOOL)addRequestInfoWithRequestID:(NSString *)requestID
-                          URLString:(NSString *)URLString
-                         parameters:(NSDictionary *)parameters
-                            success:(void (^)(id result))success
-                            failure:(void (^)(NSString *errorDesc))failure
-                      requestMethod:(KFRequestMethod)requestMethod
-            downloadDestinationPath:(NSString *)downloadDestinationPath
-                           progress:(void (^)(double fractionCompleted))progress
-                     downloadMethod:(NSString *)downloadMethod
-                   constructingBody:(void (^)(id formData))constructingBody{
-    if ([self.requestInfoDic objectForKey:requestID]) {
-        return NO;
-    }
-    
-    KFRequestInfo *requestInfo = [[KFRequestInfo alloc]initWithURLString:requestID
-                                                           requestMethod:requestMethod
-                                                                  params:parameters
-                                                                 success:success
-                                                                 failure:failure
-                                                 downloadDestinationPath:downloadDestinationPath
-                                                                progress:progress
-                                                          downloadMethod:downloadMethod
-                                                        constructingBody:constructingBody];
-    [self.requestInfoDic setObject:requestInfo forKey:requestID];
-    return YES;
-}
-
-
-- (void)removeRequestInfoWithRequestID:(NSString *)requestID{
-    [self.requestInfoDic removeObjectForKey:requestID];
-}
-
-
-- (BOOL)addSessionTaskWithRequestID:(NSString *)requestID
-                        sessionTask:(id)sessionTask
-{
-    if ([self.sessionTaskDic objectForKey:requestID]) {
-        return NO;
-    }
-    
-    [self.sessionTaskDic setObject:sessionTask forKey:requestID];
-    
-    return YES;
-}
-
-
-- (void)removeSessionTaskWithRequestID:(NSString *)requestID{
-    [self.sessionTaskDic removeObjectForKey:requestID];
-}
-
-
-
-- (void)dealSuccessWithRequest:(NSString *)requestID responseObject:(id)responseObject success:(void(^)(id result))success{
-    id result = responseObject;
-    [self removeSessionTaskWithRequestID:requestID];
-    [self.requestInfoDic removeObjectForKey:requestID];
-    if (success) {
-        success(result);
-    }
-    
-}
-
-- (void)dealFailureWithRequest:(NSString *)requestID errorDesc:(NSString *)errorDesc errorCode:(NSInteger)errorCode failure:(void(^)(NSString *errorDesc))failure{
-    [self removeSessionTaskWithRequestID:requestID];
-    [self.requestInfoDic removeObjectForKey:requestID];
-    if(failure){
-        failure(errorDesc);
-    }
-}
-
-
-- (NSString *)downloadDefaultPathWithMIMEType:(NSString *)MIMEType requestID:(NSString *)requestID {
-    
-    return nil;
-}
-
-
-- (void)httpRequestWithMethod:(KFRequestMethod)requestMethod
-                    URLString:(NSString *)URLString
-                    requestID:(NSString *)requestID
-                   parameters:(NSDictionary *)parameters
-                      success:(void (^)(id result))success
-                      failure:(void (^)(NSString *errorDesc))failure{
-    void(^successBlock)(NSURLSessionTask *task, id responseObject) = ^(NSURLSessionTask *task, id responseObject){
-        [self dealSuccessWithRequest:requestID responseObject:responseObject success:success];
-    };
-    
-    void(^failureBlock)(NSURLSessionTask *task, NSError *error) = ^(NSURLSessionTask *task,NSError *error){
-        [self dealFailureWithRequest:requestID errorDesc:error.localizedDescription errorCode:error.code failure:failure];
-    };
-    NSURLSessionDataTask * sessionTask = nil;
-    switch (requestMethod) {
-        case KFRequestMethodGet:
-            sessionTask = [self.httpSessionManager GET:URLString parameters:parameters progress:nil success:successBlock failure:failureBlock];
-            break;
-        case KFRequestMethodPost:
-            sessionTask = [self.httpSessionManager POST:URLString parameters:parameters progress:nil success:successBlock failure:failureBlock];
-            break;
-        default:
-            break;
-    }
-    
-    
-    if (sessionTask) {
-        [self addSessionTaskWithRequestID:requestID sessionTask:sessionTask];
-    }
-    
-}
-
-+ (void)appendPartForFormData:(id)formData
-                     filePath:(NSString *)filePath
-                         name:(NSString *)name
-                     fileName:(NSString *)fileName
-                     mimeType:(NSString *)mimeType
-{
-    NSString *uploadName = name ? name : @"stream";
-    NSString *uploadFileName = fileName ? fileName : [filePath lastPathComponent];
-    NSString *uploadMIMEType = mimeType ? mimeType : @"application/octet-stream";
-    
-    [formData appendPartWithFileURL:[NSURL fileURLWithPath:filePath] name:uploadName fileName:uploadFileName mimeType:uploadMIMEType error:nil];
-}
-
-+ (void)appendPartForFormData:(id)formData
-                     fileData:(NSData *)data
-                         name:(NSString *)name
-                     fileName:(NSString *)fileName
-                     mimeType:(NSString *)mimeType
-{
-    NSString *uploadName = name ? name : @"stream";
-    NSString *uploadMIMEType = mimeType ? mimeType : @"application/octet-stream";
-    
-    [formData appendPartWithFileData:data name:uploadName fileName:fileName mimeType:uploadMIMEType];
-}
-
-- (void)uploadTask:(NSString *)URLString
-         requestID:(NSString *)requestID
-        parameters:(NSDictionary *)parameters
-  constructingBody:(void (^)(id formData))constructingBody
-          progress:(void (^)(double fractionCompleted))progress
-           success:(void (^)(id result))success
-           failure:(void (^)(NSString *errorDesc))failure
-{
-    if (self.httpSessionManager.baseURL) {
-        URLString = [NSString stringWithFormat:@"%@%@",self.httpSessionManager.baseURL.absoluteString,URLString];
-    }
-    
-    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:URLString parameters:parameters constructingBodyWithBlock:constructingBody error:nil];
-    
-    NSString *tmpFileName = [NSString stringWithFormat:@"mlt_r_%f",[[NSDate date] timeIntervalSince1970]];
-    NSURL *tmpFileURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:tmpFileName]];
-    
-    [[AFHTTPRequestSerializer serializer] requestWithMultipartFormRequest:request writingStreamContentsToFile:tmpFileURL completionHandler:^(NSError *error) {
-        NSURLSessionUploadTask *uploadTask = [self.httpSessionManager uploadTaskWithRequest:request fromFile:tmpFileURL progress:^(NSProgress *uploadProgress) {
-            if (progress) {
-                progress(uploadProgress.fractionCompleted);
-            }
-        } completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-            [[NSFileManager defaultManager] removeItemAtURL:tmpFileURL error:nil];
-            
-            if (error) {
-                [self dealFailureWithRequest:requestID errorDesc:error.localizedDescription errorCode:error.code failure:failure];
-                return;
-            }
-            
-            [self dealSuccessWithRequest:requestID responseObject:responseObject success:success];
-        }];
-        [uploadTask resume];
-        
-        if (uploadTask) {
-            [self addSessionTaskWithRequestID:requestID sessionTask:uploadTask];
-        }
-    }];
-}
-
-
-- (void)downloadTask:(NSString *)URLString
-           requestID:(NSString *)requestID
-              method:(NSString *)method
-          parameters:(NSDictionary *)parameters
-     destinationPath:(NSString *)destinationPath
-            progress:(void (^)(double fractionCompleted))progress
-             success:(void (^)(id result))success
-             failure:(void (^)(NSString *errorDesc))failure
-{
-    if (self.httpSessionManager.baseURL) {
-        URLString = [NSString stringWithFormat:@"%@%@",self.httpSessionManager.baseURL,URLString];
-    }
-    
-    NSURLRequest *request = [[AFHTTPRequestSerializer serializer]requestWithMethod:method URLString:URLString parameters:parameters error:nil];
-    NSURLSessionDownloadTask *downloadTask = [self.httpSessionManager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
-        if (progress) {
-            progress(downloadProgress.fractionCompleted);
-        }
-    } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
-        if (destinationPath) {
-            return [NSURL fileURLWithPath:destinationPath];
-        }
-        NSString *defaultPath = [self downloadDefaultPathWithMIMEType:response.MIMEType requestID:requestID];
-        return [NSURL fileURLWithPath:defaultPath];
-    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-        if(error){
-            [self dealFailureWithRequest:requestID errorDesc:error.localizedDescription errorCode:error.code failure:failure];
-            return;
-        }
-        
-        if (!filePath) {
-            [self dealFailureWithRequest:requestID errorDesc:@"下载路径为空" errorCode:0 failure:failure];
-        }
-        
-        if ([response.MIMEType rangeOfString:@"text"].length) {
-            NSData *responseData = [[NSData alloc] initWithContentsOfFile:filePath.path];
-            [[NSFileManager defaultManager] removeItemAtPath:filePath.path error:nil];
-            
-            if (!responseData) {
-                [self dealFailureWithRequest:requestID errorDesc:@"响应数据为空" errorCode:0 failure:failure];
-                return;
-            }
-            
-            id responseObject = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
-            if (![responseObject isKindOfClass:[NSDictionary class]]) {
-                [self dealFailureWithRequest:requestID errorDesc:@"数据格式错误" errorCode:0 failure:failure];
-                return;
-            }
-            
-//            NSInteger code = [(NSDictionary *)responseObject getIntegerValueForKey:@"status" defaultValue:0];
-//            if (code == kKFRequestErrorTokenInvalid) {
-//                //do something
-//            }else{
-//                [self dealFailureWithRequest:requestID errorDesc:[(NSDictionary *)responseObject getStringValueForKey:@"msg" defaultValue:@""] errorCode:0 failure:failure];
-//            }
-            return;
-        }
-
-    }];
-    
-    [downloadTask resume];
-    
-    if (downloadTask) {
-        [self addSessionTaskWithRequestID:requestID sessionTask:downloadTask];
-    }
-}
-
 
 
 - (void)GET:(NSString *)URLString
@@ -454,11 +168,35 @@ static NSDictionary * FillParameters(NSDictionary *parameters) {
     [self httpRequestWithMethod:KFRequestMethodPost URLString:URLString requestID:requestID parameters:parameters success:success failure:failure];
 }
 
+//+ (void)appendPartForFormData:(id)formData
+//                     filePath:(NSString *)filePath
+//                         name:(NSString *)name
+//                     fileName:(NSString *)fileName
+//                     mimeType:(NSString *)mimeType
+//{
+//    NSString *uploadName = name ? name : @"stream";
+//    NSString *uploadFileName = fileName ? fileName : [filePath lastPathComponent];
+//    NSString *uploadMIMEType = mimeType ? mimeType : @"application/octet-stream";
+//    
+//    [formData appendPartWithFileURL:[NSURL fileURLWithPath:filePath] name:uploadName fileName:uploadFileName mimeType:uploadMIMEType error:nil];
+//}
+//
+//+ (void)appendPartForFormData:(id)formData
+//                     fileData:(NSData *)data
+//                         name:(NSString *)name
+//                     fileName:(NSString *)fileName
+//                     mimeType:(NSString *)mimeType  //content-type
+//{
+//    NSString *uploadName = name ? name : @"stream";
+//    NSString *uploadMIMEType = mimeType ? mimeType : @"application/octet-stream";
+//    
+//    [formData appendPartWithFileData:data name:uploadName fileName:fileName mimeType:uploadMIMEType];
+//}
 
 - (void)UPLOAD:(NSString *)URLString
      requestID:(NSString *)requestID
     parameters:(NSDictionary *)parameters
-    constructingBody:(void (^)(id formData))constructingBody
+constructingBody:(void (^)(id formData))constructingBody
       progress:(void (^)(double fractionCompleted))progress
        success:(void (^)(id result))success
        failure:(void (^)(NSString *errorDesc))failure{
@@ -494,7 +232,33 @@ static NSDictionary * FillParameters(NSDictionary *parameters) {
         return;
     }
     
-   
+    [self downloadTask:URLString requestID:requestID method:method parameters:parameters destinationPath:destinationPath progress:progress success:success failure:failure];
+}
+
+- (void)refreshRequestsWithNewKey:(NSString *)key andValue:(id)value{
+    NSArray *requestIDs = [self.requestInfoDic allKeys];
+    for (NSString *requestID in requestIDs) {
+        KFRequestInfo *requestInfo = [self.requestInfoDic objectForKey:requestID];
+        
+        NSMutableDictionary *newParams = [NSMutableDictionary dictionaryWithDictionary:requestInfo.params];
+        newParams[key] = value;
+        requestInfo.params = newParams;
+        
+        switch (requestInfo.requestMethod) {
+            case KFRequestMethodGet:
+            case KFRequestMethodPost:
+                [self httpRequestWithMethod:requestInfo.requestMethod URLString:requestInfo.urlString requestID:requestID parameters:requestInfo.params success:requestInfo.success failure:requestInfo.failure];
+                break;
+            case KFRequestMethodDownload:
+                [self downloadTask:requestInfo.urlString requestID:requestID method:requestInfo.downloadMethod parameters:requestInfo.params destinationPath:requestInfo.downloadMethod progress:requestInfo.progress success:requestInfo.success failure:requestInfo.failure];
+                break;
+            case KFRequestMethodUpload:
+                [self uploadTask:requestInfo.urlString requestID:requestID parameters:requestInfo.params constructingBody:requestInfo.constructingBody progress:requestInfo.progress success:requestInfo.success failure:requestInfo.failure];
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 - (void)cancelRequest:(NSString *)requestID{
@@ -509,6 +273,224 @@ static NSDictionary * FillParameters(NSDictionary *parameters) {
     [allTasks makeObjectsPerformSelector:@selector(cancel)];
     [self.sessionTaskDic removeAllObjects];
     [self.requestInfoDic removeAllObjects];
+}
+
+- (void)cancelRequestExceptFor:(NSArray *)requestIDs{
+    [self.sessionTaskDic removeObjectsForKeys:requestIDs];
+    [self cancelAll];
+}
+
+
+#pragma mark - private methods
+
+#pragma mark request id
+
+- (NSString *)autoRequestID{
+    return [NSString stringWithFormat:@"%@.requestId.%@",kBundle,@(globalRequestId)];
+}
+
+#pragma mark add for request info dic
+- (BOOL)addRequestInfoWithRequestID:(NSString *)requestID
+                          URLString:(NSString *)URLString
+                         parameters:(NSDictionary *)parameters
+                            success:(void (^)(id result))success
+                            failure:(void (^)(NSString *errorDesc))failure
+                      requestMethod:(KFRequestMethod)requestMethod
+            downloadDestinationPath:(NSString *)downloadDestinationPath
+                           progress:(void (^)(double fractionCompleted))progress
+                     downloadMethod:(NSString *)downloadMethod
+                   constructingBody:(void (^)(id formData))constructingBody{
+    if ([self.requestInfoDic objectForKey:requestID]) {
+        return NO;
+    }
+    
+    KFRequestInfo *requestInfo = [[KFRequestInfo alloc]initWithURLString:requestID
+                                                           requestMethod:requestMethod
+                                                                  params:parameters
+                                                                 success:success
+                                                                 failure:failure
+                                                 downloadDestinationPath:downloadDestinationPath
+                                                                progress:progress
+                                                          downloadMethod:downloadMethod
+                                                        constructingBody:constructingBody];
+    [self.requestInfoDic setObject:requestInfo forKey:requestID];
+    return YES;
+}
+
+
+#pragma mark add for session dic
+- (BOOL)addSessionTaskWithRequestID:(NSString *)requestID
+                        sessionTask:(id)sessionTask
+{
+    if ([self.sessionTaskDic objectForKey:requestID]) {
+        return NO;
+    }
+    
+    [self.sessionTaskDic setObject:sessionTask forKey:requestID];
+    
+    return YES;
+}
+
+
+#pragma mark deal with results
+- (void)dealSuccessWithRequest:(NSString *)requestID responseObject:(id)responseObject success:(void(^)(id result))success{
+    id result = responseObject;
+    [self.sessionTaskDic removeObjectForKey:requestID];;
+    [self.requestInfoDic removeObjectForKey:requestID];
+    if (success) {
+        success(result);
+    }
+    
+}
+
+- (void)dealFailureWithRequest:(NSString *)requestID errorDesc:(NSString *)errorDesc errorCode:(NSInteger)errorCode failure:(void(^)(NSString *errorDesc))failure{
+    [self.sessionTaskDic removeObjectForKey:requestID];;
+    [self.requestInfoDic removeObjectForKey:requestID];
+    if(failure){
+        failure(errorDesc);
+    }
+}
+
+
+#pragma mark post & get
+- (void)httpRequestWithMethod:(KFRequestMethod)requestMethod
+                    URLString:(NSString *)URLString
+                    requestID:(NSString *)requestID
+                   parameters:(NSDictionary *)parameters
+                      success:(void (^)(id result))success
+                      failure:(void (^)(NSString *errorDesc))failure{
+    void(^successBlock)(NSURLSessionTask *task, id responseObject) = ^(NSURLSessionTask *task, id responseObject){
+        [self dealSuccessWithRequest:requestID responseObject:responseObject success:success];
+    };
+    
+    void(^failureBlock)(NSURLSessionTask *task, NSError *error) = ^(NSURLSessionTask *task,NSError *error){
+        [self dealFailureWithRequest:requestID errorDesc:error.localizedDescription errorCode:error.code failure:failure];
+    };
+    NSURLSessionDataTask * sessionTask = nil;
+    switch (requestMethod) {
+        case KFRequestMethodGet:
+            sessionTask = [self.httpSessionManager GET:URLString parameters:parameters progress:nil success:successBlock failure:failureBlock];
+            break;
+        case KFRequestMethodPost:
+            sessionTask = [self.httpSessionManager POST:URLString parameters:parameters progress:nil success:successBlock failure:failureBlock];
+            break;
+        default:
+            break;
+    }
+    
+    
+    if (sessionTask) {
+        [self addSessionTaskWithRequestID:requestID sessionTask:sessionTask];
+    }
+    
+}
+
+
+#pragma mark upload
+
+- (void)uploadTask:(NSString *)URLString
+         requestID:(NSString *)requestID
+        parameters:(NSDictionary *)parameters
+  constructingBody:(void (^)(id formData))constructingBody
+          progress:(void (^)(double fractionCompleted))progress
+           success:(void (^)(id result))success
+           failure:(void (^)(NSString *errorDesc))failure
+{
+    if (self.httpSessionManager.baseURL) {
+        URLString = [NSString stringWithFormat:@"%@%@",self.httpSessionManager.baseURL.absoluteString,URLString];
+    }
+    
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:URLString parameters:parameters constructingBodyWithBlock:constructingBody error:nil];
+    
+    NSString *tmpFileName = [NSString stringWithFormat:@"mlt_r_%f",[[NSDate date] timeIntervalSince1970]];
+    NSURL *tmpFileURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:tmpFileName]];
+    
+    [[AFHTTPRequestSerializer serializer] requestWithMultipartFormRequest:request writingStreamContentsToFile:tmpFileURL completionHandler:^(NSError *error) {
+        NSURLSessionUploadTask *uploadTask = [self.httpSessionManager uploadTaskWithRequest:request fromFile:tmpFileURL progress:^(NSProgress *uploadProgress) {
+            if (progress) {
+                progress(uploadProgress.fractionCompleted);
+            }
+        } completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+            [[NSFileManager defaultManager] removeItemAtURL:tmpFileURL error:nil];
+            
+            if (error) {
+                [self dealFailureWithRequest:requestID errorDesc:error.localizedDescription errorCode:error.code failure:failure];
+                return;
+            }
+            
+            [self dealSuccessWithRequest:requestID responseObject:responseObject success:success];
+        }];
+        
+        [uploadTask resume];
+        
+        if (uploadTask) {
+            [self addSessionTaskWithRequestID:requestID sessionTask:uploadTask];
+        }
+    }];
+}
+
+
+
+#pragma mark download
+- (NSString *)downloadDefaultPathWithMIMEType:(NSString *)MIMEType requestID:(NSString *)requestID {
+    NSString *fileName = [NSString stringWithFormat:@"%@.%@",requestID,MIMEType];
+    return [kDefaultCachePath stringByAppendingPathComponent:fileName];
+}
+
+
+- (void)downloadTask:(NSString *)URLString
+           requestID:(NSString *)requestID
+              method:(NSString *)method
+          parameters:(NSDictionary *)parameters
+     destinationPath:(NSString *)destinationPath
+            progress:(void (^)(double fractionCompleted))progress
+             success:(void (^)(id result))success
+             failure:(void (^)(NSString *errorDesc))failure
+{
+    if (self.httpSessionManager.baseURL) {
+        URLString = [NSString stringWithFormat:@"%@%@",self.httpSessionManager.baseURL,URLString];
+    }
+    
+    NSURLRequest *request = [[AFHTTPRequestSerializer serializer]requestWithMethod:method URLString:URLString parameters:parameters error:nil];
+    NSURLSessionDownloadTask *downloadTask = [self.httpSessionManager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
+        if (progress) {
+//            NSLog(@"%@",downloadProgress);
+            progress(downloadProgress.fractionCompleted);
+        }
+    } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+        if (destinationPath) {
+            return [NSURL fileURLWithPath:destinationPath];
+        }
+        NSString *defaultPath = [self downloadDefaultPathWithMIMEType:response.MIMEType requestID:requestID];
+        return [NSURL fileURLWithPath:defaultPath];
+    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+        if(error){
+            [self dealFailureWithRequest:requestID errorDesc:error.localizedDescription errorCode:error.code failure:failure];
+            return;
+        }
+        
+        if (!filePath) {
+            [self dealFailureWithRequest:requestID errorDesc:@"下载路径为空" errorCode:0 failure:failure];
+            return;
+        }
+        
+ 
+        [self dealSuccessWithRequest:requestID responseObject:filePath success:success];
+
+    }];
+    
+    [downloadTask resume];
+    
+    if (downloadTask) {
+        [self addSessionTaskWithRequestID:requestID sessionTask:downloadTask];
+    }
+}
+
+
+#pragma mark - dealloc
+
+- (void)dealloc{
+    NSLog(@"KFRequestManager Dealloc");
 }
 
 @end

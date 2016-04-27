@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A097A771CD0504C00ABA08C /* KFNetworkConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A097A761CD0504C00ABA08C /* KFNetworkConfiguration.m */; };
+		2A097A791CD091ED00ABA08C /* cat.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 2A097A781CD091ED00ABA08C /* cat.JPG */; };
+		2A5F1D091CCF61DE000071AF /* KFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F1D081CCF61DE000071AF /* KFHTTPSessionManager.m */; };
 		2AC2B1B51CCDE6B00023751A /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2B1B41CCDE6B00023751A /* UIColor+Hex.m */; };
 		2AF8A75A1CB5F93100F82CB3 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF8A74E1CB5F93100F82CB3 /* AFHTTPSessionManager.m */; };
 		2AF8A75B1CB5F93100F82CB3 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF8A7511CB5F93100F82CB3 /* AFNetworkReachabilityManager.m */; };
@@ -37,6 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A097A751CD0504C00ABA08C /* KFNetworkConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFNetworkConfiguration.h; sourceTree = "<group>"; };
+		2A097A761CD0504C00ABA08C /* KFNetworkConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFNetworkConfiguration.m; sourceTree = "<group>"; };
+		2A097A781CD091ED00ABA08C /* cat.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat.JPG; sourceTree = "<group>"; };
+		2A5F1D071CCF61DE000071AF /* KFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFHTTPSessionManager.h; sourceTree = "<group>"; };
+		2A5F1D081CCF61DE000071AF /* KFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFHTTPSessionManager.m; sourceTree = "<group>"; };
 		2AC2B1B31CCDE6B00023751A /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		2AC2B1B41CCDE6B00023751A /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		2AF8A74D1CB5F93100F82CB3 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
@@ -141,6 +149,7 @@
 				C6464FCC1C8533B300F30CD3 /* ViewController.h */,
 				C6464FCD1C8533B300F30CD3 /* ViewController.m */,
 				C6464FCF1C8533B300F30CD3 /* Main.storyboard */,
+				2A097A781CD091ED00ABA08C /* cat.JPG */,
 				C665C2D61CB53F46006E9DAE /* KFUtil */,
 				C6464FD21C8533B300F30CD3 /* Assets.xcassets */,
 				C6464FD41C8533B300F30CD3 /* LaunchScreen.storyboard */,
@@ -204,6 +213,10 @@
 			children = (
 				C665C2EB1CB53F46006E9DAE /* KFRequestManager.h */,
 				C665C2EC1CB53F46006E9DAE /* KFRequestManager.m */,
+				2A097A751CD0504C00ABA08C /* KFNetworkConfiguration.h */,
+				2A097A761CD0504C00ABA08C /* KFNetworkConfiguration.m */,
+				2A5F1D071CCF61DE000071AF /* KFHTTPSessionManager.h */,
+				2A5F1D081CCF61DE000071AF /* KFHTTPSessionManager.m */,
 			);
 			path = KFNetworking;
 			sourceTree = "<group>";
@@ -301,6 +314,7 @@
 			files = (
 				C6464FD61C8533B300F30CD3 /* LaunchScreen.storyboard in Resources */,
 				C6464FD31C8533B300F30CD3 /* Assets.xcassets in Resources */,
+				2A097A791CD091ED00ABA08C /* cat.JPG in Resources */,
 				C6464FD11C8533B300F30CD3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,8 +342,10 @@
 				C6464FCB1C8533B300F30CD3 /* AppDelegate.m in Sources */,
 				2AF8A75A1CB5F93100F82CB3 /* AFHTTPSessionManager.m in Sources */,
 				2AF8A75D1CB5F93100F82CB3 /* AFURLRequestSerialization.m in Sources */,
+				2A097A771CD0504C00ABA08C /* KFNetworkConfiguration.m in Sources */,
 				2AF8A75F1CB5F93100F82CB3 /* AFURLSessionManager.m in Sources */,
 				2AF8A75B1CB5F93100F82CB3 /* AFNetworkReachabilityManager.m in Sources */,
+				2A5F1D091CCF61DE000071AF /* KFHTTPSessionManager.m in Sources */,
 				C6464FC81C8533B300F30CD3 /* main.m in Sources */,
 				2AC2B1B51CCDE6B00023751A /* UIColor+Hex.m in Sources */,
 			);
