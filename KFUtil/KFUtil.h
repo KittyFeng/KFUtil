@@ -14,4 +14,6 @@
 #import "UIView+Frame.h"
 #import "KFRequestManager.h"
 
+#define Test @"test"
+
 #endif /* KFUtil_h */
