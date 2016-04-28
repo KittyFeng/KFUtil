@@ -42,7 +42,7 @@
 /* Begin PBXFileReference section */
 		2A097A751CD0504C00ABA08C /* KFNetworkConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFNetworkConfiguration.h; sourceTree = "<group>"; };
 		2A097A761CD0504C00ABA08C /* KFNetworkConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFNetworkConfiguration.m; sourceTree = "<group>"; };
-		2A097A781CD091ED00ABA08C /* cat.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat.JPG; sourceTree = "<group>"; };
+		2A097A781CD091ED00ABA08C /* cat.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cat.JPG; path = ../KFUtilDemo/cat.JPG; sourceTree = "<group>"; };
 		2A5F1D071CCF61DE000071AF /* KFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFHTTPSessionManager.h; sourceTree = "<group>"; };
 		2A5F1D081CCF61DE000071AF /* KFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFHTTPSessionManager.m; sourceTree = "<group>"; };
 		2AC2B1B31CCDE6B00023751A /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
