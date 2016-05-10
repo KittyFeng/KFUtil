@@ -13,5 +13,6 @@
 #import "NSDictionary+Additions.h"
 #import "UIView+Frame.h"
 #import "KFRequestManager.h"
+#import "UIColor+Hex.h"
 
 #endif /* KFUtil_h */
