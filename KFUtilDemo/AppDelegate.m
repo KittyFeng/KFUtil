@@ -7,6 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import "KFHTTPSessionManager.h"
+#import "KFNetworkConfiguration.h"
+
+
+#import "ViewController.h"
+
+
 
 @interface AppDelegate ()
 
@@ -16,7 +23,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    KFNetworkConfiguration *config = [KFNetworkConfiguration sharedConfiguration];
+////    config.baseUrl = kBaseUrl3;
     return YES;
 }
 
